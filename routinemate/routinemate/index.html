@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>루틴메이트 | 오늘의 맞춤 습관 루틴</title>
+<meta name="description" content="목표와 오늘의 컨디션을 입력하면 AI가 실천 가능한 미니 루틴을 추천해주는 서비스" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="nav-bar">
+  <a href="#home" class="brand">루틴메이트</a>
+  <nav class="nav-links">
+    <a href="#home">홈</a>
+    <a href="#about">서비스 소개</a>
+    <a href="#recommend">AI 루틴 추천</a>
+    <a href="#contact">문의하기</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">☰</button>
+</header>
+
+<!-- 1. HERO / HOME -->
+<section id="home" class="section hero">
+  <div class="hero-inner">
+    <p class="eyebrow">매일 5분, 작은 실천</p>
+    <h1>거창한 계획 대신,<br />오늘 할 수 있는 루틴 하나.</h1>
+    <p class="hero-copy">
+      목표는 있는데 매번 작심삼일이었다면, 루틴메이트가 지금 가진 시간과 컨디션에 맞는
+      현실적인 루틴 하나를 골라드립니다.
+    </p>
+    <a href="#recommend" class="btn-primary">내 루틴 추천받기</a>
+  </div>
+</section>
+
+<!-- 2. ABOUT -->
+<section id="about" class="section about">
+  <h2>이렇게 작동해요</h2>
+  <div class="card-grid">
+    <div class="info-card">
+      <span class="card-num">입력</span>
+      <h3>목표와 상황을 알려주세요</h3>
+      <p>이루고 싶은 목표, 오늘 쓸 수 있는 시간, 지금 컨디션 세 가지만 입력하면 됩니다.</p>
+    </div>
+    <div class="info-card">
+      <span class="card-num">추천</span>
+      <h3>AI가 루틴을 설계해요</h3>
+      <p>입력값을 바탕으로 지금 당장 시작할 수 있는 구체적인 미니 루틴을 제안합니다.</p>
+    </div>
+    <div class="info-card">
+      <span class="card-num">실천</span>
+      <h3>오늘 바로 해보세요</h3>
+      <p>거창한 앱 설치나 회원가입 없이, 브라우저에서 바로 받아 바로 실천합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. AI 추천 -->
+<section id="recommend" class="section recommend">
+  <h2>내 루틴 추천받기</h2>
+  <p class="section-sub">아래 정보를 입력하면 AI가 오늘의 루틴을 만들어드립니다.</p>
+
+  <form id="routineForm" class="routine-form" novalidate>
+    <div class="field">
+      <label for="goal">이루고 싶은 목표 <span class="req">*</span></label>
+      <input type="text" id="goal" name="goal" placeholder="예: 아침에 일찍 일어나기, 책 꾸준히 읽기" />
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="minutes">오늘 쓸 수 있는 시간 <span class="req">*</span></label>
+        <select id="minutes" name="minutes">
+          <option value="">선택하세요</option>
+          <option value="5">5분</option>
+          <option value="15">15분</option>
+          <option value="30">30분</option>
+          <option value="60">1시간 이상</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="condition">오늘 컨디션 <span class="req">*</span></label>
+        <select id="condition" name="condition">
+          <option value="">선택하세요</option>
+          <option value="좋음">좋음</option>
+          <option value="보통">보통</option>
+          <option value="피곤함">피곤함</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn-primary" id="submitBtn">루틴 추천받기</button>
+  </form>
+
+  <div id="statusMsg" class="status-msg" role="status" aria-live="polite"></div>
+
+  <div id="resultBox" class="result-box" hidden>
+    <h3>오늘의 추천 루틴</h3>
+    <div id="resultContent"></div>
+  </div>
+</section>
+
+<!-- 4. CONTACT -->
+<section id="contact" class="section contact">
+  <h2>문의하기</h2>
+  <p class="section-sub">서비스에 대한 의견이나 제휴 문의는 아래로 보내주세요.</p>
+  <form class="contact-form" onsubmit="event.preventDefault(); alert('문의가 접수되었습니다. (데모 폼입니다)');">
+    <div class="field">
+      <label for="cname">이름</label>
+      <input type="text" id="cname" name="cname" />
+    </div>
+    <div class="field">
+      <label for="cemail">이메일</label>
+      <input type="email" id="cemail" name="cemail" />
+    </div>
+    <div class="field">
+      <label for="cmessage">메시지</label>
+      <textarea id="cmessage" name="cmessage" rows="4"></textarea>
+    </div>
+    <button type="submit" class="btn-secondary">보내기</button>
+  </form>
+</section>
+
+<footer class="site-footer">
+  <p>© 2026 루틴메이트. AI 웹 개발 미션 제출용 데모 프로젝트입니다.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
